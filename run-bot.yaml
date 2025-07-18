@@ -1,0 +1,23 @@
+name: Run Discord Bot (Temporary)
+
+on:
+  workflow_dispatch:  # Manual trigger via GitHub UI
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run bot
+      run: python3 bot.py
